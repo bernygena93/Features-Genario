@@ -1,14 +1,7 @@
 import React, {useState} from 'react';
 import Colors from '../../constants/Colors';
 import {styles} from './styles';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TextInput,
-  Button,
-} from 'react-native';
+import {View, Text, ScrollView, TextInput, Button} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {addPlace} from '../../store/actions/places.actions';
 import ImageSelector from '../../components/ImageSelector/ImageSelector';

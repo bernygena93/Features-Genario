@@ -1,12 +1,12 @@
 import RNFS from 'react-native-fs';
-
+import Config from 'react-native-config';
 export const ADD_PLACE = 'ADD_PLACE';
 
 export const addPlace = (title, image, location) => {
   return async dispatch => {
     try {
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.latitude},${location.longitude}&key=AIzaSyDuWEO5ZTit0Zo498096LBA3Sy41FZkuDI`,
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.latitude},${location.longitude}&key=${Config.API_KEY}`,
       );
       const resData = await response.json();
       const address = resData.results[0].formatted_address;
@@ -14,7 +14,7 @@ export const addPlace = (title, image, location) => {
       const fileName = image.split('/').pop();
       const Path = `file:///${RNFS.DocumentDirectoryPath}/${fileName}`;
 
-      const result = await RNFS.copyFile(image, Path);
+      await RNFS.copyFile(image, Path);
 
       dispatch({
         type: ADD_PLACE,
@@ -26,7 +26,6 @@ export const addPlace = (title, image, location) => {
           lng: location.lng,
         },
       });
-      console.log(payload);
     } catch (e) {
       console.log(e);
     }

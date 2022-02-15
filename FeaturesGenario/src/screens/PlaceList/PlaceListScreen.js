@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {FlatList} from 'react-native';
 import {useSelector} from 'react-redux';
 import PlaceItem from '../../components/PlaceItem/PlaceItem';
 
@@ -23,11 +23,5 @@ const PlaceListScreen = ({navigation}) => {
     />
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default PlaceListScreen;
