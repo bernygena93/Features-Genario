@@ -5,6 +5,7 @@ import PlaceItem from '../../components/PlaceItem/PlaceItem';
 
 const PlaceListScreen = ({navigation}) => {
   const places = useSelector(state => state.places.places);
+
   return (
     <FlatList
       data={places}
@@ -13,8 +14,10 @@ const PlaceListScreen = ({navigation}) => {
         <PlaceItem
           title={data.item.title}
           image={data.item.image}
-          address="Avenida Siempre Viva 123"
-          onSelect={() => navigation.navigate('Detalle')}
+          address={data.item.address}
+          onSelect={() =>
+            navigation.navigate('Detalle', {placeID: data.item.id})
+          }
         />
       )}
     />
